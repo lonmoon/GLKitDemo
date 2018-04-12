@@ -12,6 +12,10 @@
 		47BE07F8207D1EDE003E8238 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47BE07F6207D1EDE003E8238 /* Main.storyboard */; };
 		47BE07FA207D1EE2003E8238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47BE07F9207D1EE2003E8238 /* Assets.xcassets */; };
 		47BE07FD207D1EE2003E8238 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47BE07FB207D1EE2003E8238 /* LaunchScreen.storyboard */; };
+		47BE0807207D22EB003E8238 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE0806207D22EB003E8238 /* Vertex.swift */; };
+		47BE080B207E5A2D003E8238 /* Shader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE080A207E5A2D003E8238 /* Shader.swift */; };
+		47BE080E207E8158003E8238 /* VertexShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 47BE080D207E8158003E8238 /* VertexShader.vsh */; };
+		47BE0810207E817F003E8238 /* FragmentShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 47BE080F207E817F003E8238 /* FragmentShader.fsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		47BE07F9207D1EE2003E8238 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47BE07FC207D1EE2003E8238 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47BE07FE207D1EE2003E8238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47BE0806207D22EB003E8238 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		47BE080A207E5A2D003E8238 /* Shader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shader.swift; sourceTree = "<group>"; };
+		47BE080D207E8158003E8238 /* VertexShader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = VertexShader.vsh; sourceTree = "<group>"; };
+		47BE080F207E817F003E8238 /* FragmentShader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FragmentShader.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,26 @@
 		47BE07F1207D1EDE003E8238 /* GLKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				47BE080C207E8125003E8238 /* Shaders */,
 				47BE07F2207D1EDE003E8238 /* AppDelegate.swift */,
 				47BE07F4207D1EDE003E8238 /* ViewController.swift */,
 				47BE07F6207D1EDE003E8238 /* Main.storyboard */,
 				47BE07F9207D1EE2003E8238 /* Assets.xcassets */,
 				47BE07FB207D1EE2003E8238 /* LaunchScreen.storyboard */,
 				47BE07FE207D1EE2003E8238 /* Info.plist */,
+				47BE0806207D22EB003E8238 /* Vertex.swift */,
+				47BE080A207E5A2D003E8238 /* Shader.swift */,
 			);
 			path = GLKitDemo;
+			sourceTree = "<group>";
+		};
+		47BE080C207E8125003E8238 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				47BE080D207E8158003E8238 /* VertexShader.vsh */,
+				47BE080F207E817F003E8238 /* FragmentShader.fsh */,
+			);
+			path = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +142,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47BE080E207E8158003E8238 /* VertexShader.vsh in Resources */,
+				47BE0810207E817F003E8238 /* FragmentShader.fsh in Resources */,
 				47BE07FD207D1EE2003E8238 /* LaunchScreen.storyboard in Resources */,
 				47BE07FA207D1EE2003E8238 /* Assets.xcassets in Resources */,
 				47BE07F8207D1EDE003E8238 /* Main.storyboard in Resources */,
@@ -136,7 +158,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				47BE07F5207D1EDE003E8238 /* ViewController.swift in Sources */,
+				47BE0807207D22EB003E8238 /* Vertex.swift in Sources */,
 				47BE07F3207D1EDE003E8238 /* AppDelegate.swift in Sources */,
+				47BE080B207E5A2D003E8238 /* Shader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
