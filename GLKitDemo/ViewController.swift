@@ -59,8 +59,8 @@ class ViewController: GLKViewController {
         
         shader.prepareToDraw()
         
-        glEnableVertexAttribArray(0)
-        glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), nil)
+        glEnableVertexAttribArray(VertexAttributes.position.rawValue)
+        glVertexAttribPointer(VertexAttributes.position.rawValue, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), nil)
 
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), vertexBuffer)
         glDrawArrays(GLenum(GL_TRIANGLES), 0, 3)
