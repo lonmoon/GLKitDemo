@@ -27,6 +27,7 @@ class Shader: NSObject {
         glAttachShader(programHandler, fragmentShaderHandler)
         
         glBindAttribLocation(programHandler, VertexAttributes.position.rawValue, "a_Position")
+        glBindAttribLocation(programHandler, VertexAttributes.color.rawValue, "a_Color")
         glLinkProgram(programHandler)
         
         glDeleteShader(vertexShaderHandler)

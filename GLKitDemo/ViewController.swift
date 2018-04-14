@@ -18,10 +18,10 @@ class ViewController: GLKViewController {
     
     
     let vertices : [Vertex] = [
-        Vertex( 0.0,  1.0, 0.0),       // TOP
-        Vertex(-1.0,  0.0, 0.0),       // LEFT
-        Vertex( 1.0,  0.0, 0.0),       // RIGHT
-        Vertex( 0.0, -1.0, 0.0)        // BOTTOM
+        Vertex( 0.0,  1.0, 0.0, 1.0, 0.0, 0.0, 1),       // TOP
+        Vertex(-1.0,  0.0, 0.0, 0.0, 1.0, 0.0, 1),       // LEFT
+        Vertex( 1.0,  0.0, 0.0, 0.0, 0.0, 1.0, 1),       // RIGHT
+        Vertex( 0.0, -1.0, 0.0, 1.0, 1.0, 1.0, 1)        // BOTTOM
     ]
     
     let indices : [GLubyte] = [
@@ -72,10 +72,17 @@ class ViewController: GLKViewController {
         glEnableVertexAttribArray(VertexAttributes.position.rawValue)
         glVertexAttribPointer(VertexAttributes.position.rawValue, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), nil)
         
+        glEnableVertexAttribArray(VertexAttributes.color.rawValue)
+        glVertexAttribPointer(VertexAttributes.color.rawValue, 4, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(3 * MemoryLayout<GLfloat>.size))
+        
         // Unbind
         glBindVertexArray(0)
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
+    }
+    
+    func BUFFER_OFFSET(_ n: Int) -> UnsafeRawPointer? {
+        return UnsafeRawPointer(bitPattern: n)
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
