@@ -13,11 +13,20 @@ class ViewController: GLKViewController {
     var shader: Shader!
     
     var vertexBuffer : GLuint = 0
+    var vertexArray: GLuint = 0
+    var elementArray: GLuint = 0
+    
     
     let vertices : [Vertex] = [
-        Vertex( 0.0,  0.25, 0.0),    // TOP
-        Vertex(-0.5, -0.25, 0.0),    // LEFT
-        Vertex( 0.5, -0.25, 0.0),    // RIGHT
+        Vertex( 0.0,  1.0, 0.0),       // TOP
+        Vertex(-1.0,  0.0, 0.0),       // LEFT
+        Vertex( 1.0,  0.0, 0.0),       // RIGHT
+        Vertex( 0.0, -1.0, 0.0)        // BOTTOM
+    ]
+    
+    let indices : [GLubyte] = [
+        0, 1, 2,
+        2, 1, 3
     ]
     
     override func viewDidLoad() {
@@ -26,7 +35,7 @@ class ViewController: GLKViewController {
         
         setupContext()
         setupShader()
-        setupVertexBuffer()
+        setupVertexData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,7 +47,7 @@ class ViewController: GLKViewController {
         let glkView = view as! GLKView
         glkView.context = EAGLContext(api: .openGLES3)!
         
-        // OpenGL ES functions require a current context
+        // OpenGL ES functions require a current context.
         // This method must be used to select a context for the current thread before calling any OpenGL ES function. 
         EAGLContext.setCurrent(glkView.context)
     }
@@ -47,10 +56,26 @@ class ViewController: GLKViewController {
         shader = Shader(vertexShader: "VertexShader.vsh", fragmentShader: "FragmentShader.fsh")
     }
     
-    func setupVertexBuffer() {
-        glGenBuffers(GLsizei(1), &vertexBuffer)
+    func setupVertexData() {
+        // Use VAO to mintain vertex data.
+        glGenVertexArrays(1, &vertexArray)
+        glBindVertexArray(vertexArray)
+        
+        glGenBuffers(1, &vertexBuffer)
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), vertexBuffer)
         glBufferData(GLenum(GL_ARRAY_BUFFER), vertices.count * MemoryLayout<Vertex>.size, vertices, GLenum(GL_STATIC_DRAW))
+        
+        glGenBuffers(1, &elementArray)
+        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), elementArray)
+        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), indices.count * MemoryLayout<GLubyte>.size, indices, GLenum(GL_STATIC_DRAW))
+        
+        glEnableVertexAttribArray(VertexAttributes.position.rawValue)
+        glVertexAttribPointer(VertexAttributes.position.rawValue, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), nil)
+        
+        // Unbind
+        glBindVertexArray(0)
+        glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
+        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
@@ -59,11 +84,9 @@ class ViewController: GLKViewController {
         
         shader.prepareToDraw()
         
-        glEnableVertexAttribArray(VertexAttributes.position.rawValue)
-        glVertexAttribPointer(VertexAttributes.position.rawValue, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), nil)
-
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), vertexBuffer)
-        glDrawArrays(GLenum(GL_TRIANGLES), 0, 3)
+        glBindVertexArray(vertexArray)
+        glDrawElements(GLenum(GL_TRIANGLES), GLsizei(indices.count), GLenum(GL_UNSIGNED_BYTE), nil)
+        glBindVertexArray(0)
     }
 }
 
