@@ -12,22 +12,7 @@ class ViewController: GLKViewController {
     
     var shader: Shader!
     
-    var vertexBuffer : GLuint = 0
-    var vertexArray: GLuint = 0
-    var elementArray: GLuint = 0
-    
-    
-    let vertices : [Vertex] = [
-        Vertex( 0.0,  1.0, 0.0, 1.0, 0.0, 0.0, 1),       // TOP
-        Vertex(-1.0,  0.0, 0.0, 0.0, 1.0, 0.0, 1),       // LEFT
-        Vertex( 1.0,  0.0, 0.0, 0.0, 0.0, 1.0, 1),       // RIGHT
-        Vertex( 0.0, -1.0, 0.0, 1.0, 1.0, 1.0, 1)        // BOTTOM
-    ]
-    
-    let indices : [GLubyte] = [
-        0, 1, 2,
-        2, 1, 3
-    ]
+    var square: Square!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +20,7 @@ class ViewController: GLKViewController {
         
         setupContext()
         setupShader()
-        setupVertexData()
+        square = Square()
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,44 +41,11 @@ class ViewController: GLKViewController {
         shader = Shader(vertexShader: "VertexShader.vsh", fragmentShader: "FragmentShader.fsh")
     }
     
-    func setupVertexData() {
-        // Use VAO to mintain vertex data.
-        glGenVertexArrays(1, &vertexArray)
-        glBindVertexArray(vertexArray)
-        
-        glGenBuffers(1, &vertexBuffer)
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), vertexBuffer)
-        glBufferData(GLenum(GL_ARRAY_BUFFER), vertices.count * MemoryLayout<Vertex>.size, vertices, GLenum(GL_STATIC_DRAW))
-        
-        glGenBuffers(1, &elementArray)
-        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), elementArray)
-        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), indices.count * MemoryLayout<GLubyte>.size, indices, GLenum(GL_STATIC_DRAW))
-        
-        glEnableVertexAttribArray(VertexAttributes.position.rawValue)
-        glVertexAttribPointer(VertexAttributes.position.rawValue, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), nil)
-        
-        glEnableVertexAttribArray(VertexAttributes.color.rawValue)
-        glVertexAttribPointer(VertexAttributes.color.rawValue, 4, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(3 * MemoryLayout<GLfloat>.size))
-        
-        // Unbind
-        glBindVertexArray(0)
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
-        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
-    }
-    
-    func BUFFER_OFFSET(_ n: Int) -> UnsafeRawPointer? {
-        return UnsafeRawPointer(bitPattern: n)
-    }
-    
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         glClearColor(0.6, 0.8, 1.0, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
         
-        shader.prepareToDraw()
-        
-        glBindVertexArray(vertexArray)
-        glDrawElements(GLenum(GL_TRIANGLES), GLsizei(indices.count), GLenum(GL_UNSIGNED_BYTE), nil)
-        glBindVertexArray(0)
+        square.drawWithShader(shader)
     }
 }
 

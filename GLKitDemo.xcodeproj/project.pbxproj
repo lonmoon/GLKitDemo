@@ -16,6 +16,8 @@
 		47BE080B207E5A2D003E8238 /* Shader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE080A207E5A2D003E8238 /* Shader.swift */; };
 		47BE080E207E8158003E8238 /* VertexShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 47BE080D207E8158003E8238 /* VertexShader.vsh */; };
 		47BE0810207E817F003E8238 /* FragmentShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 47BE080F207E817F003E8238 /* FragmentShader.fsh */; };
+		47BE0816208361B3003E8238 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE0815208361B3003E8238 /* Model.swift */; };
+		47BE08182083625C003E8238 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE08172083625C003E8238 /* Square.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		47BE080A207E5A2D003E8238 /* Shader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shader.swift; sourceTree = "<group>"; };
 		47BE080D207E8158003E8238 /* VertexShader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = VertexShader.vsh; sourceTree = "<group>"; };
 		47BE080F207E817F003E8238 /* FragmentShader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FragmentShader.fsh; sourceTree = "<group>"; };
+		47BE0815208361B3003E8238 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		47BE08172083625C003E8238 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 				47BE07FE207D1EE2003E8238 /* Info.plist */,
 				47BE0806207D22EB003E8238 /* Vertex.swift */,
 				47BE080A207E5A2D003E8238 /* Shader.swift */,
+				47BE0815208361B3003E8238 /* Model.swift */,
+				47BE08172083625C003E8238 /* Square.swift */,
 			);
 			path = GLKitDemo;
 			sourceTree = "<group>";
@@ -157,6 +163,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47BE08182083625C003E8238 /* Square.swift in Sources */,
+				47BE0816208361B3003E8238 /* Model.swift in Sources */,
 				47BE07F5207D1EDE003E8238 /* ViewController.swift in Sources */,
 				47BE0807207D22EB003E8238 /* Vertex.swift in Sources */,
 				47BE07F3207D1EDE003E8238 /* AppDelegate.swift in Sources */,
