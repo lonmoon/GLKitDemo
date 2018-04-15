@@ -14,6 +14,8 @@ class Shader: NSObject {
     var programHandler: GLuint = 0
     
     var texture: GLuint = 0
+    var modelViewMatrix = GLKMatrix4Identity
+    var projectionMatrix = GLKMatrix4Identity
     
     init(vertexShader: String, fragmentShader: String) {
         super.init()
@@ -93,5 +95,7 @@ class Shader: NSObject {
         glUseProgram(programHandler)
         
         glBindTexture(GLenum(GL_TEXTURE_2D), texture)
+        glUniformMatrix4fv(glGetUniformLocation(programHandler, "u_ModelViewMatrix"), 1, GLboolean(GL_FALSE), modelViewMatrix.array)
+        glUniformMatrix4fv(glGetUniformLocation(programHandler, "u_ProjectionMatrix"), 1, GLboolean(GL_FALSE), projectionMatrix.array)
     }
 }

@@ -19,6 +19,7 @@
 		47BE0816208361B3003E8238 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE0815208361B3003E8238 /* Model.swift */; };
 		47BE08182083625C003E8238 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE08172083625C003E8238 /* Square.swift */; };
 		47BE081D208393F0003E8238 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 47BE081C208393F0003E8238 /* texture.png */; };
+		47BE081F2083BCD5003E8238 /* GLKMatrix+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE081E2083BCD5003E8238 /* GLKMatrix+Array.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		47BE0815208361B3003E8238 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		47BE08172083625C003E8238 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		47BE081C208393F0003E8238 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
+		47BE081E2083BCD5003E8238 /* GLKMatrix+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GLKMatrix+Array.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				47BE0806207D22EB003E8238 /* Vertex.swift */,
 				47BE080A207E5A2D003E8238 /* Shader.swift */,
 				47BE0815208361B3003E8238 /* Model.swift */,
+				47BE081E2083BCD5003E8238 /* GLKMatrix+Array.swift */,
 				47BE08172083625C003E8238 /* Square.swift */,
 			);
 			path = GLKitDemo;
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47BE08182083625C003E8238 /* Square.swift in Sources */,
+				47BE081F2083BCD5003E8238 /* GLKMatrix+Array.swift in Sources */,
 				47BE0816208361B3003E8238 /* Model.swift in Sources */,
 				47BE07F5207D1EDE003E8238 /* ViewController.swift in Sources */,
 				47BE0807207D22EB003E8238 /* Vertex.swift in Sources */,

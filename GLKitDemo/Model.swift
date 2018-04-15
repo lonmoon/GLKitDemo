@@ -27,6 +27,11 @@ class Model: NSObject {
     
     func drawWithShader(_ shader: Shader) {
         shader.texture = texture
+        shader.modelViewMatrix = GLKMatrix4MakeLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0)
+        shader.projectionMatrix = GLKMatrix4MakePerspective(.pi / 4,
+                                                            Float(UIScreen.main.nativeBounds.width / UIScreen.main.nativeBounds.height),
+                                                            0.1,
+                                                            100)
         
         shader.prepareToDraw()
         
