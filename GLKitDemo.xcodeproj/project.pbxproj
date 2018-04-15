@@ -18,6 +18,7 @@
 		47BE0810207E817F003E8238 /* FragmentShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 47BE080F207E817F003E8238 /* FragmentShader.fsh */; };
 		47BE0816208361B3003E8238 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE0815208361B3003E8238 /* Model.swift */; };
 		47BE08182083625C003E8238 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE08172083625C003E8238 /* Square.swift */; };
+		47BE081D208393F0003E8238 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 47BE081C208393F0003E8238 /* texture.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		47BE080F207E817F003E8238 /* FragmentShader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FragmentShader.fsh; sourceTree = "<group>"; };
 		47BE0815208361B3003E8238 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		47BE08172083625C003E8238 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		47BE081C208393F0003E8238 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		47BE07F1207D1EDE003E8238 /* GLKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				47BE081920839255003E8238 /* Textures */,
 				47BE080C207E8125003E8238 /* Shaders */,
 				47BE07F2207D1EDE003E8238 /* AppDelegate.swift */,
 				47BE07F4207D1EDE003E8238 /* ViewController.swift */,
@@ -88,6 +91,14 @@
 				47BE080F207E817F003E8238 /* FragmentShader.fsh */,
 			);
 			path = Shaders;
+			sourceTree = "<group>";
+		};
+		47BE081920839255003E8238 /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				47BE081C208393F0003E8238 /* texture.png */,
+			);
+			path = Textures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +162,7 @@
 				47BE080E207E8158003E8238 /* VertexShader.vsh in Resources */,
 				47BE0810207E817F003E8238 /* FragmentShader.fsh in Resources */,
 				47BE07FD207D1EE2003E8238 /* LaunchScreen.storyboard in Resources */,
+				47BE081D208393F0003E8238 /* texture.png in Resources */,
 				47BE07FA207D1EE2003E8238 /* Assets.xcassets in Resources */,
 				47BE07F8207D1EDE003E8238 /* Main.storyboard in Resources */,
 			);

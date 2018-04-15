@@ -12,6 +12,7 @@ import GLKit
 enum VertexAttributes: GLuint {
     case position = 0
     case color = 1
+    case texCoord = 2
 }
 
 struct Vertex {
@@ -24,7 +25,10 @@ struct Vertex {
     var b: GLfloat = 0.0
     var a: GLfloat = 1.0
     
-    init(_ x: GLfloat, _ y: GLfloat, _ z: GLfloat, _ r: GLfloat = 0, _ g: GLfloat = 0, _ b: GLfloat = 0, _ a: GLfloat = 1) {
+    var s: GLfloat = 0.0
+    var t: GLfloat = 0.0
+    
+    init(_ x: GLfloat, _ y: GLfloat, _ z: GLfloat, _ r: GLfloat = 0, _ g: GLfloat = 0, _ b: GLfloat = 0, _ a: GLfloat = 1, _ s: GLfloat = 0, _ t: GLfloat = 0) {
         self.x = x
         self.y = y
         self.z = z
@@ -33,5 +37,8 @@ struct Vertex {
         self.g = g
         self.b = b
         self.a = a
+        
+        self.s = s
+        self.t = t
     }
 }

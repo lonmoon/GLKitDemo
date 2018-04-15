@@ -6,11 +6,13 @@
 //  Copyright © 2018年 Lonmoon. All rights reserved.
 //
 
-import UIKit
+import GLKit
 
 class Model: NSObject {
     var vertices: [Vertex] = []
     var indices: [GLubyte] = []
+    
+    var texture: GLuint = 0
     
     var vertexArray: GLuint = 0
     var vertexBuffer: GLuint = 0
@@ -24,11 +26,26 @@ class Model: NSObject {
     }
     
     func drawWithShader(_ shader: Shader) {
+        shader.texture = texture
+        
         shader.prepareToDraw()
         
         glBindVertexArray(vertexArray)
         glDrawElements(GLenum(GL_TRIANGLES), GLsizei(indices.count), GLenum(GL_UNSIGNED_BYTE), nil)
         glBindVertexArray(0)
+    }
+    
+    func loadTexture(_ fileName: String) {
+        let path = Bundle.main.path(forResource: fileName, ofType: nil)!
+        let options = [
+            GLKTextureLoaderOriginBottomLeft: true
+        ]
+        do {
+            let info = try GLKTextureLoader.texture(withContentsOfFile: path, options: options as [String : NSNumber]?)
+            texture = info.name
+        } catch {
+            NSLog("Texture load error.")
+        }
     }
     
     private func setupModelData() {
@@ -49,6 +66,9 @@ class Model: NSObject {
         
         glEnableVertexAttribArray(VertexAttributes.color.rawValue)
         glVertexAttribPointer(VertexAttributes.color.rawValue, 4, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET(3 * MemoryLayout<GLfloat>.size))
+        
+        glEnableVertexAttribArray(VertexAttributes.texCoord.rawValue)
+        glVertexAttribPointer(VertexAttributes.texCoord.rawValue, 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(MemoryLayout<Vertex>.size), BUFFER_OFFSET((3 + 4) * MemoryLayout<GLfloat>.size))
         
         // Unbind
         glBindVertexArray(0)

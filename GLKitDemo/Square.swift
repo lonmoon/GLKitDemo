@@ -9,10 +9,10 @@
 import UIKit
 
 let vertexList: [Vertex] = [
-    Vertex( 1.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1),       // lower-right
-    Vertex( 1.0,  1.0, 0.0, 0.0, 1.0, 0.0, 1),       // upper-right
-    Vertex(-1.0,  1.0, 0.0, 0.0, 0.0, 1.0, 1),       // upper-left
-    Vertex(-1.0, -1.0, 0.0, 1.0, 1.0, 1.0, 1)        // lower-left
+    Vertex( 1.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1, 0.0625, 0.0000),       // lower-right
+    Vertex( 1.0,  1.0, 0.0, 0.0, 1.0, 0.0, 1, 0.0625, 0.0625),       // upper-right
+    Vertex(-1.0,  1.0, 0.0, 0.0, 0.0, 1.0, 1, 0.0000, 0.0625),       // upper-left
+    Vertex(-1.0, -1.0, 0.0, 1.0, 1.0, 1.0, 1, 0.0000, 0.0000)        // lower-left
 ]
 
 let indexList: [GLubyte] = [
@@ -23,5 +23,6 @@ let indexList: [GLubyte] = [
 class Square: Model {
     override init(vertices: [Vertex] = vertexList, indices: [GLubyte] = indexList) {
         super.init(vertices: vertices, indices: indices)
+        loadTexture("texture.png")
     }
 }

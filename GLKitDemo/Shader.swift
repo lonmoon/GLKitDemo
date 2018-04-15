@@ -13,6 +13,8 @@ class Shader: NSObject {
     
     var programHandler: GLuint = 0
     
+    var texture: GLuint = 0
+    
     init(vertexShader: String, fragmentShader: String) {
         super.init()
         compile(vertexShader: vertexShader, fragmentShader: fragmentShader)
@@ -28,6 +30,7 @@ class Shader: NSObject {
         
         glBindAttribLocation(programHandler, VertexAttributes.position.rawValue, "a_Position")
         glBindAttribLocation(programHandler, VertexAttributes.color.rawValue, "a_Color")
+        glBindAttribLocation(programHandler, VertexAttributes.texCoord.rawValue, "a_TexCoord")
         glLinkProgram(programHandler)
         
         glDeleteShader(vertexShaderHandler)
@@ -88,5 +91,7 @@ class Shader: NSObject {
     
     func prepareToDraw() {
         glUseProgram(programHandler)
+        
+        glBindTexture(GLenum(GL_TEXTURE_2D), texture)
     }
 }
