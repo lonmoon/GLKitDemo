@@ -45,6 +45,8 @@ class Model: NSObject {
         do {
             let info = try GLKTextureLoader.texture(withContentsOfFile: path, options: options as [String : NSNumber]?)
             texture = info.name
+            glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MIN_FILTER), GL_NEAREST);
+            glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MAG_FILTER), GL_NEAREST);
         } catch {
             NSLog("Texture load error.")
         }
