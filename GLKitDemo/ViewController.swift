@@ -13,6 +13,7 @@ class ViewController: GLKViewController {
     var shader: Shader!
     
     var square: Square!
+    var cube: Cube!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,8 @@ class ViewController: GLKViewController {
         
         setupContext()
         setupShader()
-        square = Square()
+//        square = Square()
+        cube = Cube()
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,11 +37,15 @@ class ViewController: GLKViewController {
         // OpenGL ES functions require a current context.
         // This method must be used to select a context for the current thread before calling any OpenGL ES function. 
         EAGLContext.setCurrent(glkView.context)
+        
+        glEnable(GLenum(GL_DEPTH_TEST))
+        glEnable(GLenum(GL_CULL_FACE))
+        glCullFace(GLenum(GL_BACK))
     }
     
     func setupShader() {
         shader = Shader(vertexShader: "VertexShader.vsh", fragmentShader: "FragmentShader.fsh")
-        shader.modelViewMatrix = GLKMatrix4MakeLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0)
+        shader.modelViewMatrix = GLKMatrix4MakeLookAt(0, 5, 10, 0, 0, 0, 0, 1, 0)
         shader.projectionMatrix = GLKMatrix4MakePerspective(.pi / 4,
                                                             Float(UIScreen.main.nativeBounds.width / UIScreen.main.nativeBounds.height),
                                                             0.1,
@@ -48,10 +54,12 @@ class ViewController: GLKViewController {
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         glClearColor(0.6, 0.8, 1.0, 1.0)
-        glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
+        glClear(GLbitfield(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT))
         
-        square.transformation = GLKMatrix4RotateY(GLKMatrix4Identity, Float(2 * .pi * sin(timeSinceFirstResume)))
-        square.drawWithShader(shader)
+//        square.transformation = GLKMatrix4RotateY(GLKMatrix4Identity, Float(2 * .pi * sin(timeSinceFirstResume)))
+//        square.drawWithShader(shader)
+        cube.transformation = GLKMatrix4RotateY(GLKMatrix4Identity, Float(timeSinceFirstResume))
+        cube.drawWithShader(shader)
     }
 }
 
