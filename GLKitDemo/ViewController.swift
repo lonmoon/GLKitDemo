@@ -11,9 +11,10 @@ import GLKit
 class ViewController: GLKViewController {
     
     var shader: Shader!
-    
-    var square: Square!
+
     var cube: Cube!
+    
+    var camera = Camera()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,6 @@ class ViewController: GLKViewController {
         
         setupContext()
         setupShader()
-//        square = Square()
         cube = Cube()
     }
     
@@ -45,19 +45,17 @@ class ViewController: GLKViewController {
     
     func setupShader() {
         shader = Shader(vertexShader: "VertexShader.vsh", fragmentShader: "FragmentShader.fsh")
-        shader.modelViewMatrix = GLKMatrix4MakeLookAt(0, 5, 10, 0, 0, 0, 0, 1, 0)
-        shader.projectionMatrix = GLKMatrix4MakePerspective(.pi / 4,
-                                                            Float(UIScreen.main.nativeBounds.width / UIScreen.main.nativeBounds.height),
-                                                            0.1,
-                                                            100)
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
         glClearColor(0.6, 0.8, 1.0, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT))
         
-//        square.transformation = GLKMatrix4RotateY(GLKMatrix4Identity, Float(2 * .pi * sin(timeSinceFirstResume)))
-//        square.drawWithShader(shader)
+        camera.position.y = Float(10 * sin(timeSinceFirstResume))
+//        camera.target.y = Float(3 * sin(timeSinceFirstResume))
+        shader.modelViewMatrix = camera.modelViewMatrix()
+        shader.projectionMatrix = camera.projectionMatrix()
+
         cube.transformation = GLKMatrix4RotateY(GLKMatrix4Identity, Float(timeSinceFirstResume))
         cube.drawWithShader(shader)
     }

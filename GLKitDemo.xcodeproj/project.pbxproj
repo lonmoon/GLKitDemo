@@ -21,6 +21,7 @@
 		47BE081D208393F0003E8238 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 47BE081C208393F0003E8238 /* texture.png */; };
 		47BE081F2083BCD5003E8238 /* GLKMatrix+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE081E2083BCD5003E8238 /* GLKMatrix+Array.swift */; };
 		47BE08212084F8B5003E8238 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE08202084F8B5003E8238 /* Cube.swift */; };
+		47BE082320879159003E8238 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE082220879159003E8238 /* Camera.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		47BE081C208393F0003E8238 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
 		47BE081E2083BCD5003E8238 /* GLKMatrix+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GLKMatrix+Array.swift"; sourceTree = "<group>"; };
 		47BE08202084F8B5003E8238 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
+		47BE082220879159003E8238 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				47BE081E2083BCD5003E8238 /* GLKMatrix+Array.swift */,
 				47BE08172083625C003E8238 /* Square.swift */,
 				47BE08202084F8B5003E8238 /* Cube.swift */,
+				47BE082220879159003E8238 /* Camera.swift */,
 			);
 			path = GLKitDemo;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				47BE0807207D22EB003E8238 /* Vertex.swift in Sources */,
 				47BE07F3207D1EDE003E8238 /* AppDelegate.swift in Sources */,
 				47BE080B207E5A2D003E8238 /* Shader.swift in Sources */,
+				47BE082320879159003E8238 /* Camera.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
